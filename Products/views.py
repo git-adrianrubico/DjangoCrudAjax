@@ -44,7 +44,7 @@ def EditProductAPI(request, id):
 
 @api_view(['DELETE'])
 def DeleteProductAPI(request, id):
-    if request.is_ajax():
+    if request.method('DELETE'):
         product = get_object_or_404(Products, id=id)
         product.delete()
         return Response('Product successfully Deleted!', status=status.HTTP_200_OK)
