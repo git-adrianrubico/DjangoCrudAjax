@@ -1,3 +1,5 @@
+const getUrl = window.location.href;
+
 function getCookie(name) {
     let cookieValue = null;
     if (document.cookie && document.cookie !== '') {
@@ -32,7 +34,7 @@ $.ajaxSetup({
 
 //All Products API
 $.ajax({
-    url : "http://localhost:8000/api/products/",
+    url : getUrl + "/api/products/",
     dataType: "json",
     success : function (response) {
         let trHTML = '';
@@ -53,7 +55,7 @@ $(function() {
         $('#addProduct').on('submit', function(e) { 
             e.preventDefault();  
 
-            let myurl = "http://localhost:8000/api/products/add/";
+            let myurl = getUrl + "/api/products/add/";
 
         $.ajax({
             type : 'POST',
@@ -79,7 +81,7 @@ $('#Product-Records').on('click', '.update', function(e){
     let id = $(this).attr('id');
     $('input[id=Myid]').val(id);
 
-    let myurl = "http://localhost:8000/api/products/"+id+"/";
+    let myurl = getUrl + "/api/products/"+id+"/";
 
     $( "#p-name" ).change(function() {
         $('input[name=name]').val($(this).val());
@@ -116,7 +118,7 @@ $(function() {
             let id = $("#Myid").attr("value");
             console.log(id);
 
-            let myurl = "http://localhost:8000/api/products/edit/"+id+"/";
+            let myurl = getUrl + "/api/products/edit/"+id+"/";
 
         $.ajax({
             type : 'PUT',
@@ -143,7 +145,7 @@ $('#Product-Records').on('click', ".delete", function(e){
     $('input[id=Myid]').val(id);
     console.log(id)
 
-    let myurl = "http://localhost:8000/api/products/"+id+"/";
+    let myurl = getUrl + "/api/products/"+id+"/";
 
     $.ajax({
         async: true,
@@ -164,7 +166,7 @@ $(function() {
             let id = $("#Myid").attr("value");
             console.log(id);
 
-        let myurl = "http://localhost:8000/api/products/delete/"+id+"/";
+        let myurl = getUrl + "/api/products/delete/"+id+"/";
 
         $.ajax({
             async: true,
